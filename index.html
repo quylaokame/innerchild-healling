@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNER CHILD HEALING</title>
+    <meta name="author" content="David Grzyb">
+    <meta name="description" content="">
+
+    <!-- Tailwind -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+        .font-family-karla {
+            font-family: karla;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            height: 10vh;
+        }
+
+        main {
+            height: 80vh;
+            overflow: auto;
+            display: block;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        main::-webkit-scrollbar {
+            display: none;
+        }
+
+        footer {
+            height: 10vh;
+        }
+    </style>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.4.2/browser/pixi.min.js"
+        integrity="sha512-YB+Jnx8/VO5uFB0S9NoOsSC1JHct0zTJI8GGijwuxNDLcZ/UkChDy/xUUBKEgnyhDVFTcdfwF5lTJ1lY/RcTwQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+        integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/PixiPlugin.min.js"></script>
+
+</head>
+
+<body class="bg-white font-family-karla w-full">
+
+    <!-- Top Bar Nav -->
+    <header class="w-full py-4 bg-lime-950 flex items-center justify-between">
+        <nav class="w-full">
+            <div class="w-full mx-auto flex flex-wrap items-center justify-between">
+                <nav>
+                    <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
+                        <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Inner Child Headling</a></li>
+                    </ul>
+                </nav>
+
+                <div class="flex items-center text-lg no-underline text-white pr-6">
+                    <a class="" href="#">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a class="pl-6" href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main" class="w-full">
+        <div id="game-container">
+            <!-- <div id="introText" class="float h-0 mx-auto">
+                <div class="container w-10/12 rounded-lg mx-auto flex flex-col p-5 space-y-5 items-center">
+                    <h3 class="max-w-md text-2xl font-bold text-center md:text-3xl">
+                        Let's think about your own question and choose 5 cards you want
+                    </h3>
+                    <div class="flex justify-center md:justify-start">
+                        <div id="btnPlay"
+                            class="p-3 px-6 pt-2 text-white bg-red-800 rounded-2xl baseline hover:bg-brightRedLight">
+                            Play</div>
+                    </div>
+                </div>
+            </div> -->
+            <canvas id="pixi-canvas"></canvas>
+        </div>
+        <div class="mx-auto w-11/12 px-5 py-10">
+            <p id="message">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat rutrum elit dictum
+                molestie. Nullam placerat, urna sit amet tincidunt luctus, nibh ex tempor justo, in tempus mi quam quis
+                purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla facilisi. Duis luctus
+                tristique diam sit amet laoreet. Vivamus a lacus faucibus, pretium nisi vitae, iaculis magna. Donec
+                placerat justo eu metus dapibus placerat. Sed aliquam nunc vel tempor luctus.
+
+                Aliquam molestie suscipit lorem, ac ullamcorper magna tempor volutpat. In ipsum sem, varius in sagittis
+                eu, sagittis nec odio. In posuere elementum venenatis. Nullam sed convallis enim, at interdum sem. Donec
+                consectetur accumsan sodales. Vivamus vitae laoreet erat, vel accumsan magna. Etiam egestas consequat
+                dictum. Aliquam commodo magna urna, ultrices volutpat elit fermentum dapibus. Integer dui nisl, pharetra
+                vel rutrum ut, tincidunt quis velit. Nunc ac erat pellentesque dolor ultrices condimentum. Vestibulum
+                ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis posuere gravida odio
+                vitae lacinia. Aliquam eget justo varius, tristique lacus a, rutrum massa.
+
+                Nullam non nunc odio. Vestibulum vel venenatis nisl. Nullam sodales quam nibh, quis accumsan sem iaculis
+                at. Ut cursus eget dui et varius. Aliquam malesuada blandit ligula ut tempor. Suspendisse et congue
+                risus, sed dictum lorem. Cras malesuada magna in eleifend laoreet. Vivamus iaculis urna a laoreet
+                efficitur.
+
+                Sed mauris nulla, sagittis vitae sodales at, dapibus quis nunc. Etiam bibendum, lacus non congue
+                aliquam, augue diam venenatis ipsum, viverra tristique arcu orci vitae leo. Aliquam imperdiet vel leo
+                nec molestie. Duis imperdiet, metus ut tincidunt pretium, nisi augue commodo purus, vitae ultrices massa
+                nisi quis felis. Suspendisse a sapien vitae libero pretium tempus non ac metus. Etiam hendrerit sem vel
+                erat eleifend, a pellentesque tortor hendrerit. Pellentesque egestas nec sapien vitae varius.
+
+                In hac habitasse platea dictumst. Integer eu commodo enim. Maecenas in massa nec sem porta aliquet.
+                Vestibulum faucibus convallis arcu, ut consectetur orci congue dignissim. Aenean pharetra commodo
+                egestas. Vestibulum eget urna volutpat, pretium dolor euismod, porta nisi. Etiam faucibus odio ante, a
+                hendrerit tellus porttitor eget. Phasellus non pellentesque enim, eget vestibulum augue. Sed eu lorem
+                sit amet leo dictum vestibulum ac quis orci. Ut ullamcorper tortor ut erat rhoncus, non vehicula ligula
+                fringilla. Curabitur finibus velit eu mi gravida suscipit. Donec eleifend leo nec justo pharetra, nec
+                porta orci tincidunt.
+            </p>
+        </div>
+    </main>
+    <footer class="w-full bg-white  bottom-0 m-0 p-0">
+        <div class="w-full h-full bg-lime-950 mx-auto flex flex-col items-center text-white">
+            <div class="uppercase py-6">&copy; innerchildhealingdeck.com</div>
+        </div>
+    </footer>
+    <script src="./index.js" type="module"> </script>
+</body>
+
+</html>
