@@ -35,6 +35,7 @@ export class Card extends PIXI.Container {
 		this.on("touchmove", this._onTouchmove, this);
 		this.on("touchend", this._onTouchEnd, this);
 		this.on("touchcancel", this._onTouchEnd, this);
+		this.on("click", this.onPickCard, this);
 	}
 
 	_onTouchStart(e){
@@ -45,7 +46,8 @@ export class Card extends PIXI.Container {
 	}
 	_onTouchEnd(e){
 		if (!this.isTouched) return;
-		this.onPickCard(this);
+		this.onPickCard();
+		this.isTouched = false;
 	}
 
 	_initGraphics() {
