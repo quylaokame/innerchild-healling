@@ -14,12 +14,16 @@ const app = new PIXI.Application({
 	backgroundColor: 0x000000,
 	width: SCREEN_WIDTH,
 	height: SCREEN_HEIGHT,
-	backgroundAlpha: 0.1
+	backgroundAlpha: 0
 });
 
 globalThis.__PIXI_APP__ = app;
+globalThis.app = app;
 app.stage.addChild(game);
-// window.addEventListener("resize", resizeCanvas);
+
+app.renderer.plugins.interaction.autoPreventDefault = false;
+app.renderer.view.style.touchAction = "auto";
+
 resizeCanvas();
 
 function resizeCanvas() {
@@ -41,6 +45,14 @@ function resizeCanvas() {
 	}, 1);
 }
 
+const messageContainer = document.getElementById("messageContainer");
+const messageDiv = document.getElementById("messageContainer");
 
+const showMessage = function (isShow, message = "") {
+	messageContainer.style.display = isShow ? 'block' : "none";
+	if (message) messageDiv.innerHTML = message;
+}
+
+game.on("SHOW_MESSAGE", showMessage);
 
 

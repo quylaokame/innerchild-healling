@@ -38,7 +38,7 @@ export class IntroCard extends PIXI.Container {
 
 	_listenEvent(){
 		this.interactive = true;
-		this.on("pointerup", this.onPickCard, this);
+		this.on("pointertap", this.onPickCard, this);
 	}
 
 	onPickCard(){

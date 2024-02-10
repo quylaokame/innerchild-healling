@@ -124,7 +124,7 @@ class Game extends PIXI.Container {
 		this.overlay.addChild(graphics);
 		this.graphics = graphics;
 		this.graphics.alpha = 0;
-		this.overlay.on("pointerup", this.onClickOverlay, this, true);
+		// this.overlay.on("pointerup", this.onClickOverlay, this, true);
 		this._initGlow();
 	}
 
@@ -249,6 +249,7 @@ class Game extends PIXI.Container {
 		this.overlay.addChild(card);
 		const duration = 0.5;
 		this.tween().to(this.graphics, { duration, alpha: 0.8 }).play();
+		this.emit("SHOW_MESSAGE", true);
 	}
 
 	onClickOverlay() {
@@ -257,6 +258,7 @@ class Game extends PIXI.Container {
 		}
 	}
 	_moveCurrentCardBack() {
+		this.emit("SHOW_MESSAGE", false);
 		this._stopGlowIdle();
 		if (!this.card) return;
 		const card = this.card;

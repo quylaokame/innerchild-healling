@@ -31,7 +31,21 @@ export class Card extends PIXI.Container {
 
 	_listenEvent(){
 		this.interactive = true;
-		this.on("pointerup", this.onPickCard, this);
+		this.on("touchstart", this._onTouchStart, this);
+		this.on("touchmove", this._onTouchmove, this);
+		this.on("touchend", this._onTouchEnd, this);
+		this.on("touchcancel", this._onTouchEnd, this);
+	}
+
+	_onTouchStart(e){
+		this.isTouched = true;
+	}
+	_onTouchmove(e){
+		this.isTouched = false;
+	}
+	_onTouchEnd(e){
+		if (!this.isTouched) return;
+		this.onPickCard(this);
 	}
 
 	_initGraphics() {

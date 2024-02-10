@@ -34,7 +34,9 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-
+        #messageContainer {
+            display: none;
+        }
         main::-webkit-scrollbar {
             display: none;
         }
@@ -96,7 +98,7 @@
             </div> -->
             <canvas id="pixi-canvas"></canvas>
         </div>
-        <div class="mx-auto w-11/12 px-5 py-10">
+        <div id="messageContainer" class="mx-auto w-11/12 px-5 py-10">
             <p id="message">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat rutrum elit dictum
                 molestie. Nullam placerat, urna sit amet tincidunt luctus, nibh ex tempor justo, in tempus mi quam quis
