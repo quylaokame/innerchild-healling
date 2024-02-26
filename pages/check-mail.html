@@ -26,10 +26,6 @@
         }
         main {
             height: 80vh;
-            overflow: auto;
-        }
-        canvas {
-            height: 80vh;
         }
         footer {
             height: 10vh;
@@ -51,7 +47,7 @@
                         <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Inner Child Headling</a></li>
                     </ul>
                 </nav>
-
+    
                 <div class="flex items-center text-lg no-underline text-white pr-6">
                     <a class="" href="#">
                         <i class="fab fa-facebook"></i>
@@ -63,26 +59,20 @@
             </div>
         </nav>
     </header>
-
-    <main class="flex items-center justify-between">
-        <div class="container md:w-10/12 sm:w-full mx-auto flex flex-col items-center px-5 py-10">
+    
+    <main class="container mx-auto md:w-10/12 flex flex-col justify-center">
+        <div class="container md:w-10/12 sm:w-full mx-auto flex flex-col items-center">
             <div class="flex flex-col bg-gray-300 rounded-lg mx-auto space-y-10 w-10/12 p-8 items-center">
                 <h3 class="max-w-md text-2xl font-bold text-center md:text-3xl">
-                    It 's never too late to have a happy childhood
+                    Please Check Your Email
                 </h3>
                 <p class="max-w-sm text-center text-gray md:text-left">
-                    This deck is a way of making peace with our past and learning to love and accept ourselves fully.
+                    Email will arrived in 3-5 minutes. Open link to see the messages from your spiritual guy.
                 </p>
-                <form class="w-full md:w-3/4 lg:w-1/2">
-                    <div class="flex">
-                        <input id="InputEmail" type="text" class="w-full px-4 py-2 rounded-lg focus:outline-none"
-                            placeholder="Email Address" />
-                    </div>
-                </form>
                 <div class="flex justify-center md:justify-start">
-                    <div id="BtnTryOut"
+                    <div id="BtnTryOut" onclick="backToHome()"
                         class="p-3 px-6 pt-2 text-white bg-red-800 rounded-2xl baseline hover:bg-brightRedLight">
-                        Try it out</div>
+                        Back To Home</div>
                 </div>
             </div>
         </div>
@@ -92,7 +82,11 @@
             <div class="uppercase py-6">&copy; innerchildhealingdeck.com</div>
         </div>
     </footer>
-    <script src="./scripts/getCards.js" type="module"></script>
+    <script>
+        function backToHome(){
+            window.location.replace("http://localhost:3000");
+        }
+    </script>
 </body>
 
 </html>
